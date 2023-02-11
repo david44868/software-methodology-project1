@@ -5,19 +5,49 @@ public class Student implements Comparable<Student> {
 
     public Student (String first, String last, Date birth, Major m, int credits) {
         profile = new Profile(first, last, birth);
-        major = m;
-        creditCompleted = credits;
+        if(!validMajor(m)) {
+            throw new IllegalArgumentException(m + "is not a valid major.");
+        }
+        else {
+            major = m;
+        }
+        if(!validCredits(credits)) {
+            throw new IllegalArgumentException("Negative credits not allowed.");
+        }
+        else {
+            creditCompleted = credits;
+        }
+
+    }
+
+    // Check if the major is listed in the enum class for the majors
+    public boolean validMajor(Major m) {
+        if(m == Major.CS || m == Major.EE || m == Major.ITI || m == Major.MATH || m == Major.BAIT) {
+            major = m;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    // Check if the credits are valid, must not be negative
+    public boolean validCredits(int credits) {
+        if(credits < 0) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         // return Student info
         return "";
     }
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         // Compare two students
         return false;
     }
