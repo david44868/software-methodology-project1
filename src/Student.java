@@ -4,26 +4,17 @@ public class Student implements Comparable<Student> {
     private int creditCompleted;
 
     public Student (String first, String last, Date birth, Major m, int credits) {
+        first = first.substring(0, 1).toUpperCase() + first.substring(1).toLowerCase();
+        last = last.substring(0, 1).toUpperCase() + last.substring(1).toLowerCase();
         profile = new Profile(first, last, birth);
-        if(!validMajor(m)) {
-            throw new IllegalArgumentException("Major code invalid: " + m);
-        }
-        else {
-            major = m;
-        }
-        if(!validCredits(credits)) {
-            throw new IllegalArgumentException("Negative credits not allowed.");
-        }
-        else {
-            creditCompleted = credits;
-        }
+        major = m;
+        creditCompleted = credits;
 
     }
 
     // Check if the major is listed in the enum class for the majors
     public boolean validMajor(Major m) {
         if(m == Major.CS || m == Major.EE || m == Major.ITI || m == Major.MATH || m == Major.BAIT) {
-            major = m;
             return true;
         }
         else {
@@ -45,10 +36,19 @@ public class Student implements Comparable<Student> {
         return this.profile;
     }
 
+    public Major getMajor() {
+        return this.major;
+    }
+
+    public int getCreditCompleted() {
+        return this.creditCompleted;
+    }
+
     @Override
     public String toString() {
         // return Student info
-        return this.profile.toString();
+        return this.profile.toString() + "(" + this.major.getCode() + " " + this.major +
+                " " + this.major.getSchool() + ")" + " credits completed: " + creditCompleted;
     }
     @Override
     public boolean equals(Object object) {
