@@ -26,26 +26,26 @@ public class Profile implements Comparable<Profile> {
             return false;
         }
         Profile temporary = (Profile) obj;
-        return fname.equals(temporary.getfname()) && lname.equals(temporary.getlname()) && dob.equals(temporary.getdob());
+        return this.fname.toLowerCase().equals(temporary.getFirstname().toLowerCase()) && this.lname.toLowerCase().equals(temporary.getLastname().toLowerCase()) && this.dob.equals(temporary.getDob());
     }
     @Override
     public int compareTo(Profile p) {
         // return int when comparing students
-        if(lname.compareTo(p.lname) < 0) {
+        if(this.lname.toLowerCase().compareTo(p.lname.toLowerCase()) < 0) {
             return -1;
         }
-        else if(lname.compareTo(p.lname) > 0) {
+        else if(this.lname.toLowerCase().compareTo(p.lname.toLowerCase()) > 0) {
             return 1;
         }
         else {
-            if (fname.compareTo(p.fname) < 0) {
+            if (this.fname.toLowerCase().compareTo(p.fname.toLowerCase()) < 0) {
                 return -1;
-            } else if (fname.compareTo(p.fname) > 0) {
+            } else if (this.fname.toLowerCase().compareTo(p.fname.toLowerCase()) > 0) {
                 return 1;
             } else {
-                if (dob.compareTo(p.dob) < 0) {
+                if (this.dob.compareTo(p.dob) < 0) {
                     return -1;
-                } else if (dob.compareTo(p.dob) > 0) {
+                } else if (this.dob.compareTo(p.dob) > 0) {
                     return 1;
                 } else {
                     return 0;
@@ -54,15 +54,15 @@ public class Profile implements Comparable<Profile> {
         }
     }
 
-    public String getfname(){
+    public String getFirstname(){
         return fname;
     }
 
-    public String getlname(){
+    public String getLastname(){
         return lname;
     }
 
-    public Date getdob(){
+    public Date getDob(){
         return dob;
     }
 }
