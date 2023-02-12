@@ -1,12 +1,6 @@
 public class Roster {
     private Student[] roster;
     private int size;
-
-    public Roster () {
-        size = 4;
-        roster = new Student[size];
-    }
-
     private int find(Student student) {} //search the given student in roster
     private void grow() {} //increase the array capacity by 4
     public boolean add(Student student){} //add student to end of array
