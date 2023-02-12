@@ -23,11 +23,44 @@ public class Roster {
         }
         roster = temporary;
     } //increase the array capacity by 4
-    public boolean add(Student student){} //add student to end of array
+    public boolean add(Student student) {
+        if(roster[size - 1] != null) {
+            this.grow();
+        }
+        for (int x = 0; x < size; x++){
+            if(roster[x] == null) {
+                if(!student.validCredits(student.getCreditCompleted())) {
+                    return false;
+                }
+                else if(!student.validMajor(student.getMajor())){
+                    return false;
+                }
+                // Need more else if to satisfy the dob conditions
+                else {
+                    roster[x] = student;
+                    break;
+                }
+            }
+        }
+        return true;
+    } //add student to end of array
 
     public boolean remove(Student student){}//maintain the order after remove
-    public boolean contains(Student student){} //if the student is in roster
-    public void print () {} //print roster sorted by profiles
-    public void printBySchoolMajor() {} //print roster sorted by school major
-    public void printByStanding() {} //print roster sorted by standing
+    public boolean contains(Student student) {
+        for (int x = 0; x < size; x++) {
+            if(roster[x].equals(student)) {
+                return true;
+            }
+        }
+        return false;
+    } //if the student is in roster
+    public void print () {
+
+    } //print roster sorted by profiles
+    public void printBySchoolMajor() {
+
+    } //print roster sorted by school major
+    public void printByStanding() {
+
+    } //print roster sorted by standing
 }
