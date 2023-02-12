@@ -32,6 +32,21 @@ public class Student implements Comparable<Student> {
         }
     }
 
+    public String getStanding() {
+        if(this.creditCompleted < 30) {
+            return "Freshman";
+        }
+        else if(this.creditCompleted < 60) {
+            return "Sophomore";
+        }
+        else if(this.creditCompleted < 90) {
+            return "Junior";
+        }
+        else {
+            return "Senior";
+        }
+    }
+
     public Profile getProfile() {
         return this.profile;
     }
@@ -48,7 +63,8 @@ public class Student implements Comparable<Student> {
     public String toString() {
         // return Student info
         return this.profile.toString() + "(" + this.major.getCode() + " " + this.major +
-                " " + this.major.getSchool() + ")" + " credits completed: " + creditCompleted;
+                " " + this.major.getSchool() + ")" + " credits completed: " + creditCompleted
+                + " (" + this.getStanding() + ")";
     }
     @Override
     public boolean equals(Object object) {
