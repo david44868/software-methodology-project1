@@ -49,6 +49,12 @@ public class Student implements Comparable<Student> {
     @Override
     public boolean equals(Object object) {
         // Compare two students
+        if(this == object) {
+            return true;
+        }
+        if(!(object instanceof Student)) {
+            return false;
+        }
         Student s = (Student) object;
         if(this.profile.equals(s.profile)) {
             return true;
