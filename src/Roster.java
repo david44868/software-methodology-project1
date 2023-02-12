@@ -29,13 +29,18 @@ public class Roster {
         }
         for (int x = 0; x < size; x++){
             if(roster[x] == null) {
+                // Check if credits are valid
                 if(!student.validCredits(student.getCreditCompleted())) {
                     return false;
                 }
+                // Check if major is valid
                 else if(!student.validMajor(student.getMajor())){
                     return false;
                 }
-
+                // Check if student already exists
+                else if(this.contains(student)) {
+                    return false;
+                }
                 // ** Need more else if to satisfy the dob conditions **
                 // Any date of birth that is not a valid calendar date
                 // The date of birth is today or a future date
