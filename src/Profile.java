@@ -16,7 +16,7 @@ public class Profile implements Comparable<Profile> {
         return fname + " " + lname + " " + dob;
     }
     @Override
-    public boolean equals(Object o)
+    public boolean equals(Object obj)
     {
         if(obj == this){
             return true;
