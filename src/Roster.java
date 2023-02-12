@@ -35,7 +35,12 @@ public class Roster {
                 else if(!student.validMajor(student.getMajor())){
                     return false;
                 }
-                // Need more else if to satisfy the dob conditions
+
+                // ** Need more else if to satisfy the dob conditions **
+                // Any date of birth that is not a valid calendar date
+                // The date of birth is today or a future date
+                // A student who is less than 16 years old
+
                 else {
                     roster[x] = student;
                     break;
