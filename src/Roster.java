@@ -80,9 +80,29 @@ public class Roster {
     } //if the student is in roster
     public void print () {
         System.out.println("* Student roster sorted by last name, first name, DOB **");
-
+        if(size == 0) {
+            System.out.println("There are no students in the roster.");
+        }
+        else {
+            if(size > 1) {
+                for(int i = 0; i < size; i++) {
+                    for(int j = 1; j < (size - 1); j++) {
+                        if(roster[j-i].compareTo(roster[j]) == 1) {
+                            Student temporary = roster[j - 1];
+                            roster[j - 1] = roster[j];
+                            roster[j] = temporary;
+                        }
+                    }
+                }
+            }
+            for(int i = 0; i < size; i++) {
+                System.out.println(roster[i]);
+            }
+            System.out.println("* end of roster **");
+        }
     } //print roster sorted by profiles
     public void printBySchoolMajor() {
+
 
     } //print roster sorted by school major
     public void printByStanding() {
