@@ -41,6 +41,10 @@ public class Student implements Comparable<Student> {
         }
     }
 
+    public Profile getProfile() {
+        return this.profile;
+    }
+
     @Override
     public String toString() {
         // return Student info
