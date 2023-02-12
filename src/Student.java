@@ -60,12 +60,7 @@ public class Student implements Comparable<Student> {
             return false;
         }
         Student s = (Student) object;
-        if(this.profile.equals(s.profile)) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return this.profile.equals(s.profile);
     }
     @Override
     public int compareTo(Student s) {
