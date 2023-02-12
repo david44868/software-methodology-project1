@@ -45,7 +45,21 @@ public class Roster {
         return true;
     } //add student to end of array
 
-    public boolean remove(Student student){}//maintain the order after remove
+    public boolean remove(Student student) {
+        if(!this.contains(student)) {
+            return false;
+        }
+        else {
+            Student[] temporary = new Student[size];
+            for(int x = 0; x < size; x++) {
+                if(!roster[x].equals(student)) {
+                    temporary[x] = roster[x];
+                }
+            }
+            roster = temporary;
+            return true;
+        }
+    }//maintain the order after remove
     public boolean contains(Student student) {
         for (int x = 0; x < size; x++) {
             if(roster[x].equals(student)) {
@@ -55,6 +69,7 @@ public class Roster {
         return false;
     } //if the student is in roster
     public void print () {
+        System.out.println("* Student roster sorted by last name, first name, DOB **");
 
     } //print roster sorted by profiles
     public void printBySchoolMajor() {
