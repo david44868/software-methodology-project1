@@ -1,6 +1,7 @@
 public class Roster {
     private Student[] roster;
     private int size;
+
     private static final int NOT_VALID = -1;
     private int find(Student student) {
         for(int x = 0; x < size; x++){
@@ -20,6 +21,16 @@ public class Roster {
     public boolean add(Student student){
 
     } //add student to end of array
+
+    public Roster () {
+        size = 4;
+        roster = new Student[size];
+    }
+
+    private int find(Student student) {} //search the given student in roster
+    private void grow() {} //increase the array capacity by 4
+    public boolean add(Student student){} //add student to end of array
+
     public boolean remove(Student student){}//maintain the order after remove
     public boolean contains(Student student){} //if the student is in roster
     public void print () {} //print roster sorted by profiles

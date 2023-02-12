@@ -14,5 +14,12 @@ public enum Major {
         this.code = code;
     }
 
+    public String getSchool() {
+        return school;
+    }
+
+    public String getCode() {
+        return code;
+    }
 
 }

@@ -6,7 +6,7 @@ public class Student implements Comparable<Student> {
     public Student (String first, String last, Date birth, Major m, int credits) {
         profile = new Profile(first, last, birth);
         if(!validMajor(m)) {
-            throw new IllegalArgumentException(m + "is not a valid major.");
+            throw new IllegalArgumentException("Major code invalid: " + m);
         }
         else {
             major = m;
@@ -44,16 +44,22 @@ public class Student implements Comparable<Student> {
     @Override
     public String toString() {
         // return Student info
-        return "";
+        return this.profile.toString();
     }
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object object) {
         // Compare two students
-        return false;
+        Student s = (Student) object;
+        if(this.profile.equals(s.profile)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     @Override
     public int compareTo(Student s) {
         // return int when comparing students
-        return 0;
+        return this.profile.compareTo(s.profile);
     }
 }

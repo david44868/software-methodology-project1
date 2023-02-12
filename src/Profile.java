@@ -31,7 +31,27 @@ public class Profile implements Comparable<Profile> {
     @Override
     public int compareTo(Profile p) {
         // return int when comparing students
-        return 0;
+        if(lname.compareTo(p.lname) < 0) {
+            return -1;
+        }
+        else if(lname.compareTo(p.lname) > 0) {
+            return 1;
+        }
+        else {
+            if (fname.compareTo(p.fname) < 0) {
+                return -1;
+            } else if (fname.compareTo(p.fname) > 0) {
+                return 1;
+            } else {
+                if (dob.compareTo(p.dob) < 0) {
+                    return -1;
+                } else if (dob.compareTo(p.dob) > 0) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        }
     }
 
     public String getfname(){
