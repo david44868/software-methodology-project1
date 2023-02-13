@@ -102,7 +102,42 @@ public class Roster {
         }
     } //print roster sorted by profiles
     public void printBySchoolMajor() {
-
+        System.out.println("* Student roster sorted by school, major **");
+        if(size == 0) {
+            System.out.println("There are no students in the roster.");
+        }
+        else {
+            if(size > 1) {
+                for(int i = 0; i < size; i++) {
+                    for(int j = 1; j < (size - 1); j++) {
+                        if(roster[j-1].getMajor().getSchool().compareTo(roster[j].getMajor().getSchool()) > 0)
+                        {
+                            Student temporary = roster[j - 1];
+                            roster[j - 1] = roster[j];
+                            roster[j] = temporary;
+                        }
+                        else if(roster[j-1].getMajor().getSchool().compareTo(roster[j].getMajor().getSchool()) == 0) {
+                            if(roster[j-1].getMajor().compareTo(roster[j].getMajor()) > 0) {
+                                Student temporary = roster[j - 1];
+                                roster[j - 1] = roster[j];
+                                roster[j] = temporary;
+                            }
+                            else if(roster[j-1].getMajor().compareTo(roster[j].getMajor()) == 0) {
+                                if(roster[j-1].compareTo(roster[j]) > 0) {
+                                    Student temporary = roster[j - 1];
+                                    roster[j - 1] = roster[j];
+                                    roster[j] = temporary;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            for(int i = 0; i < size; i++) {
+                System.out.println(roster[i]);
+            }
+            System.out.println("* end of roster **");
+        }
 
     } //print roster sorted by school major
     public void printByStanding() {
