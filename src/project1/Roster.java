@@ -19,7 +19,8 @@ public class Roster {
             }
         }
         return NOT_VALID;
-    } //search the given student in roster
+    }
+    //search the given student in roster
     private void grow() {
         Student[] temporary = new Student[size + 4];
         for (int x = 0; x < size; x++){
@@ -60,7 +61,7 @@ public class Roster {
     } //add student to end of array
 
     public boolean remove(Student student) {
-        if(student == null) {
+        if(!this.contains(student)) {
             return false;
         }
         else {
@@ -83,13 +84,10 @@ public class Roster {
         return false;
     } //if the student is in roster
 
+    // returns index of student, for outside use
     public Student search(String first, String last, String birth) {
-        Profile tempProfile = new Profile(first, last, new Date(birth));
-        for(int i = 0; i < size; i++) {
-            if(roster[i].getProfile().equals(tempProfile))
-                return roster[i];
-        }
-        return null;
+        Student temp = new Student(first, last, birth);
+        return roster[this.find(temp)];
     }
 
     public void print () {

@@ -24,7 +24,7 @@ public class RosterManager {
                     System.out.println();
             }
             if(command.equals("R"))
-                if(!roster.remove(roster.search(st1.nextToken(), st1.nextToken(), st1.nextToken())))
+                if(roster.remove(roster.search(st1.nextToken(), st1.nextToken(), st1.nextToken())))
                     System.out.println();
             if(command.equals("P"))
                 roster.print();
@@ -37,7 +37,7 @@ public class RosterManager {
             }
             if(command.equals("C")) {
                 String fname = st1.nextToken(), lname = st1.nextToken(), date = st1.nextToken();
-                Student temp = roster.search(fname, lname, date);
+                Student temp = new Student(fname, lname, date);
                 if(roster.contains(temp))
                     System.out.println(fname + " " + lname + " " + date + " is not in the roster.");
                 else
