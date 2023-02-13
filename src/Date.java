@@ -1,4 +1,3 @@
-import java.time.Month;
 import java.util.Calendar;
 import java.util.StringTokenizer;
 
@@ -69,7 +68,10 @@ public class Date implements Comparable<Date> {
         if(day <= MAXIMUM_DAY - 3){
             return true;
         }
-        if ((day == ((balancer == Calendar.JANUARY) || (balancer == Calendar.MARCH) || (balancer == Calendar.MAY) || (balancer == Calendar.JULY) || (balancer == Calendar.AUGUST) || (balancer == Calendar.OCTOBER) || (balancer == Calendar.DECEMBER))) && MAXIMUM_DAY){
+        if (day == MAXIMUM_DAY && ((balancer == Calendar.JANUARY) || (balancer == Calendar.MARCH) || (balancer == Calendar.MAY) || (balancer == Calendar.JULY) || (balancer == Calendar.AUGUST) || (balancer == Calendar.OCTOBER) || (balancer == Calendar.DECEMBER))){
+            return true;
+        }
+        if(day == MAXIMUM_DAY - 1 && balancer != Calendar.FEBRUARY + 1){
             return true;
         }
         return false;
