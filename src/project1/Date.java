@@ -1,3 +1,5 @@
+package project1;
+
 import java.util.Calendar;
 import java.util.StringTokenizer;
 
@@ -30,6 +32,7 @@ public class Date implements Comparable<Date> {
         month = Integer.parseInt(st1.nextToken());
         day = Integer.parseInt(st1.nextToken());
         year = Integer.parseInt(st1.nextToken());
+
     } //take “mm/dd/yyyy” and create a Date object
 
     public boolean isValid() {
@@ -50,33 +53,31 @@ public class Date implements Comparable<Date> {
             return true;
         }
         if (day == MAXIMUM_DAY - 2) {
-        if (balancer == Calendar.FEBRUARY) {
+            if (balancer == Calendar.FEBRUARY) {
                 if (year % QUADRENNIAL == 0) {
                     if (year % CENTENNIAL == 0) {
                         if (year % QUATERCENTENNIAL == 0) {
-                                return true;
-                            }
-                            return false;
+                            return true;
                         }
-                        return true;
+                        return false;
                     }
-                    return false;
+                    return true;
                 }
-                return true;
-        }
-
-        if (day == MAXIMUM_DAY && ((balancer == Calendar.JANUARY) || (balancer == Calendar.MARCH) || (balancer == Calendar.MAY) || (balancer == Calendar.JULY) || (balancer == Calendar.AUGUST) || (balancer == Calendar.OCTOBER) || (balancer == Calendar.DECEMBER))){
+                return false;
+            }
             return true;
         }
         if(day == MAXIMUM_DAY - 1 && balancer != Calendar.FEBRUARY + 1){
             return true;
         }
+        if (day == MAXIMUM_DAY && ((balancer == Calendar.JANUARY) || (balancer == Calendar.MARCH) || (balancer == Calendar.MAY) || (balancer == Calendar.JULY) || (balancer == Calendar.AUGUST) || (balancer == Calendar.OCTOBER) || (balancer == Calendar.DECEMBER))){
+            return true;
+        }
         return false;
     } //check if a date is a valid calendar date
-
     @Override
     public String toString() {
-        // return Date info
+        // return project1.Date info
         return month + "/" + day + "/" + year;
     }
     @Override
@@ -121,14 +122,15 @@ public class Date implements Comparable<Date> {
     }
     public static void main(String[] args) {
         // Test cases for Date
+        // Test cases for project1.Date
         System.out.println("Test1: The output should return false.");
-        Date date1 = new Date("02/31/2020");
+        Date date1 = new Date("02/30/2022");
         System.out.println(date1.toString() + ": " + date1.isValid());
         System.out.println("Test2: The output should return true.");
         Date date2 = new Date("02/28/2021");
         System.out.println(date2.toString() + ": " + date2.isValid());
         System.out.println("Test3: The output should return true.");
-        Date date3 = new Date("02/29/2020");
+        Date date3 = new Date("02/29/2016");
         System.out.println(date3.toString() + ": " + date3.isValid());
     }
 }

@@ -1,7 +1,9 @@
+package project1;
+
 public class Profile implements Comparable<Profile> {
     private String lname;
     private String fname;
-    private Date dob; //use the Date class described in (f)
+    private Date dob; //use the project1.Date class described in (f)
 
     public Profile(String fname, String lname, Date dob)
     {

@@ -1,3 +1,5 @@
+package project1;
+
 public enum Major {
 
     CS("SAS", "01:198"),

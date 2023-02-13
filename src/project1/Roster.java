@@ -1,3 +1,7 @@
+package project1;
+
+import project1.Student;
+
 public class Roster {
     private Student[] roster;
     private int size;
@@ -15,7 +19,8 @@ public class Roster {
             }
         }
         return NOT_VALID;
-    } //search the given student in roster
+    }
+    //search the given student in roster
     private void grow() {
         Student[] temporary = new Student[size + 4];
         for (int x = 0; x < size; x++){
@@ -78,6 +83,13 @@ public class Roster {
         }
         return false;
     } //if the student is in roster
+
+    // returns index of student, for outside use
+    public Student search(String first, String last, String birth) {
+        Student temp = new Student(first, last, birth);
+        return roster[this.find(temp)];
+    }
+
     public void print () {
         System.out.println("* Student roster sorted by last name, first name, DOB **");
         if(size == 0) {
