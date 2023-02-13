@@ -97,7 +97,7 @@ public class Date implements Comparable<Date> {
         return day;
     }
     @Override
-    public int compareTo(Date d) {
+    public int compareTo(Date date) {
         if(year > date.getYear()){
             return BEFORE;
         }
@@ -109,7 +109,7 @@ public class Date implements Comparable<Date> {
                 if (day > date.getDay())
                     return BEFORE;
             }
-                if(day == date.getDay) {
+                if(day == date.getDay()) {
                     return SAME;
                 }
         }
