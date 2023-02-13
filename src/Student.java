@@ -3,11 +3,11 @@ public class Student implements Comparable<Student> {
     private Major major; //Major is an enum type
     private int creditCompleted;
 
-    public Student (String first, String last, String birth, Major m, int credits) {
+    public Student (String first, String last, String birth, String m, int credits) {
         first = first.substring(0, 1).toUpperCase() + first.substring(1).toLowerCase();
         last = last.substring(0, 1).toUpperCase() + last.substring(1).toLowerCase();
         profile = new Profile(first, last, new Date(birth));
-        major = m;
+        major = Major.valueOf(m);
         creditCompleted = credits;
 
     }
