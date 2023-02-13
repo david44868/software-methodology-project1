@@ -1,3 +1,5 @@
+package project1;
+
 import java.util.Calendar;
 import java.util.StringTokenizer;
 
@@ -29,7 +31,7 @@ public class Date implements Comparable<Date> {
         month = Integer.parseInt(st1.nextToken());
         day = Integer.parseInt(st1.nextToken());
         year = Integer.parseInt(st1.nextToken());
-    } //take “mm/dd/yyyy” and create a Date object
+    } //take “mm/dd/yyyy” and create a project1.Date object
     public boolean isValid() {
         int balancer = month - 1;//off set month
         if(balancer > MAXIMUM_MONTH){
@@ -79,7 +81,7 @@ public class Date implements Comparable<Date> {
 
     @Override
     public String toString() {
-        // return Date info
+        // return project1.Date info
         return month + "/" + day + "/" + year;
     }
     @Override
@@ -117,7 +119,7 @@ public class Date implements Comparable<Date> {
         return AFTER;
     }
     public static void main(String[] args) {
-        // Test cases for Date
+        // Test cases for project1.Date
         Date date = new Date ("01/30/22");
         System.out.println(date.toString() + ":" +date.isValid());
         Date date1 = new Date("02/28/2022");

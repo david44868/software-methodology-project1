@@ -1,6 +1,8 @@
+package project1;
+
 public class Student implements Comparable<Student> {
     private Profile profile;
-    private Major major; //Major is an enum type
+    private Major major; //project1.Major is an enum type
     private int creditCompleted;
 
     public Student (String first, String last, String birth, String m, int credits) {
@@ -56,7 +58,7 @@ public class Student implements Comparable<Student> {
 
     @Override
     public String toString() {
-        // return Student info
+        // return project1.Student info
         return this.profile.toString() + "(" + this.major.getCode() + " " + this.major +
                 " " + this.major.getSchool() + ")" + " credits completed: " + creditCompleted
                 + " (" + this.getStanding() + ")";
