@@ -24,50 +24,47 @@ public class Date implements Comparable<Date> {
         day = currentDate.get(Calendar.DAY_OF_MONTH);
         year = currentDate.get(Calendar.YEAR);
     } //create an object with today’s date (see Calendar class)
+
     public Date(String date) {
         StringTokenizer st1 = new StringTokenizer(date, "/");
         month = Integer.parseInt(st1.nextToken());
         day = Integer.parseInt(st1.nextToken());
         year = Integer.parseInt(st1.nextToken());
     } //take “mm/dd/yyyy” and create a Date object
+
     public boolean isValid() {
         int balancer = month - 1;//off set month
-        if(balancer > MAXIMUM_MONTH){
+        if (year > TWENTYTWENTYTHREE) {
             return false;
         }
-        if(day > MAXIMUM_DAY){
+        if (month < MINIMUM_MONTH || balancer > MAXIMUM_MONTH) {
             return false;
         }
-        if(balancer < MINIMUM_MONTH){
+        if (day < MINIMUM_DAY || day > MAXIMUM_DAY) {
             return false;
         }
-        if(day < MINIMUM_DAY){
+        if (this.compareTo(new Date()) <= SAME) {
             return false;
         }
-        if(year > TWENTYTWENTYTHREE){
-            return false;
-        }
-        if (this.compareTo(new Date()) <= SAME){
-            return false;
-        }
-        if(day <= MAXIMUM_DAY - 3){
+        if (day <= MAXIMUM_DAY - 3) {
             return true;
         }
-        if(day == MAXIMUM_DAY - 2){
-            if(balancer == Calendar.FEBRUARY){
-                if(year % QUADRENNIAL == 0){
-                    if(year % CENTENNIAL == 0){
-                        if(year % QUATERCENTENNIAL == 0){
-                            return true;
+        if (day == MAXIMUM_DAY - 2) {
+        if (balancer == Calendar.FEBRUARY) {
+                if (year % QUADRENNIAL == 0) {
+                    if (year % CENTENNIAL == 0) {
+                        if (year % QUATERCENTENNIAL == 0) {
+                                return true;
+                            }
+                            return false;
                         }
-                        return false;
+                        return true;
                     }
-                    return true;
+                    return false;
                 }
-                return false;
-            }
-            return true;
+                return true;
         }
+
         if (day == MAXIMUM_DAY && ((balancer == Calendar.JANUARY) || (balancer == Calendar.MARCH) || (balancer == Calendar.MAY) || (balancer == Calendar.JULY) || (balancer == Calendar.AUGUST) || (balancer == Calendar.OCTOBER) || (balancer == Calendar.DECEMBER))){
             return true;
         }
@@ -84,8 +81,14 @@ public class Date implements Comparable<Date> {
     }
     @Override
     public boolean equals(Object o) {
-        // Compare two dates
-        return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Date date = (Date) o;
+        return year == date.year && month == date.month && day == date.day;
     }
     public int getYear(){
         return year;
@@ -118,9 +121,14 @@ public class Date implements Comparable<Date> {
     }
     public static void main(String[] args) {
         // Test cases for Date
-        Date date = new Date ("01/30/22");
-        System.out.println(date.toString() + ":" +date.isValid());
-        Date date1 = new Date("02/28/2022");
+        System.out.println("Test1: The output should return false.");
+        Date date1 = new Date("02/31/2020");
         System.out.println(date1.toString() + ": " + date1.isValid());
+        System.out.println("Test2: The output should return true.");
+        Date date2 = new Date("02/28/2021");
+        System.out.println(date2.toString() + ": " + date2.isValid());
+        System.out.println("Test3: The output should return true.");
+        Date date3 = new Date("02/29/2020");
+        System.out.println(date3.toString() + ": " + date3.isValid());
     }
 }
