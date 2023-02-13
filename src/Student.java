@@ -24,12 +24,7 @@ public class Student implements Comparable<Student> {
 
     // Check if the credits are valid, must not be negative
     public boolean validCredits(int credits) {
-        if(credits < 0) {
-            return false;
-        }
-        else {
-            return true;
-        }
+        return (credits < 0);
     }
 
     public String getStanding() {
