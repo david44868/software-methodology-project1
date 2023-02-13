@@ -122,7 +122,7 @@ public class Date implements Comparable<Date> {
         // Test cases for project1.Date
         Date date = new Date ("01/30/22");
         System.out.println(date.toString() + ":" +date.isValid());
-        Date date1 = new Date("02/28/2022");
+        Date date1 = new Date("02/30/2022");
         System.out.println(date1.toString() + ": " + date1.isValid());
     }
 }

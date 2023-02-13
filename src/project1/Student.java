@@ -29,6 +29,10 @@ public class Student implements Comparable<Student> {
         return (credits < 0);
     }
 
+    public void changeMajor(Major m) {
+
+    }
+
     public String getStanding() {
         if(this.creditCompleted < 30) {
             return "Freshman";

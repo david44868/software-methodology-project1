@@ -83,9 +83,9 @@ public class Roster {
         return false;
     } //if the student is in roster
     public void print () {
-        System.out.println("* project1.Student roster sorted by last name, first name, DOB **");
+        System.out.println("* Student roster sorted by last name, first name, DOB **");
         if(size == 0) {
-            System.out.println("project1.Student roster is empty!");
+            System.out.println("Student roster is empty!");
         }
         else {
             if(size > 1) {
@@ -106,9 +106,9 @@ public class Roster {
         }
     } //print roster sorted by profiles
     public void printBySchoolMajor() {
-        System.out.println("* project1.Student roster sorted by school, major **");
+        System.out.println("* Student roster sorted by school, major **");
         if(size == 0) {
-            System.out.println("project1.Student roster is empty!");
+            System.out.println("Student roster is empty!");
         }
         else {
             if(size > 1) {
@@ -145,9 +145,9 @@ public class Roster {
 
     } //print roster sorted by school major
     public void printByStanding() {
-        System.out.println("* project1.Student roster sorted by standing **");
+        System.out.println("* Student roster sorted by standing **");
         if(size == 0) {
-            System.out.println("project1.Student roster is empty!");
+            System.out.println("Student roster is empty!");
         }
         else {
             if(size > 1) {
