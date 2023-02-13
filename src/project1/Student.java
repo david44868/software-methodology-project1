@@ -14,6 +14,12 @@ public class Student implements Comparable<Student> {
 
     }
 
+    public Student (String first, String last, String birth) {
+        first = first.substring(0, 1).toUpperCase() + first.substring(1).toLowerCase();
+        last = last.substring(0, 1).toUpperCase() + last.substring(1).toLowerCase();
+        profile = new Profile(first, last, new Date(birth));
+    }
+
     // Check if the major is listed in the enum class for the majors
     public boolean validMajor(Major m) {
         if(m == Major.CS || m == Major.EE || m == Major.ITI || m == Major.MATH || m == Major.BAIT) {
