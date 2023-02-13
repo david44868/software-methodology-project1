@@ -29,8 +29,14 @@ public class Student implements Comparable<Student> {
         return (credits < 0);
     }
 
-    public void changeMajor(Major m) {
-
+    public boolean changeMajor(Major m) {
+        if(this.validMajor(m)) {
+            major = m;
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public String getStanding() {

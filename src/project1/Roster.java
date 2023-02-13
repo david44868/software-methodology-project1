@@ -60,7 +60,7 @@ public class Roster {
     } //add student to end of array
 
     public boolean remove(Student student) {
-        if(!this.contains(student)) {
+        if(student == null) {
             return false;
         }
         else {
@@ -82,6 +82,16 @@ public class Roster {
         }
         return false;
     } //if the student is in roster
+
+    public Student search(String first, String last, String birth) {
+        Profile tempProfile = new Profile(first, last, new Date(birth));
+        for(int i = 0; i < size; i++) {
+            if(roster[i].getProfile().equals(tempProfile))
+                return roster[i];
+        }
+        return null;
+    }
+
     public void print () {
         System.out.println("* Student roster sorted by last name, first name, DOB **");
         if(size == 0) {

@@ -13,39 +13,42 @@ public class RosterManager {
 
     public void run() {
         Scanner in = new Scanner(System.in);
-        System.out.println("project1.Roster Manager running...");
+        System.out.println("Roster Manager running...");
         Roster roster = new Roster();
         String input = in.nextLine();
         while(!input.equals("Q")) {
             StringTokenizer st1 = new StringTokenizer(input, " ");
             String command = st1.nextToken();
-            switch(command) {
-                case "A":
-                    if(roster.add(new Student(st1.nextToken(), st1.nextToken(), st1.nextToken(), st1.nextToken(), Integer.parseInt(st1.nextToken()))) {
-                        System.out.println();
-                    }
-                    break;
-                case "R":
-                    roster.remove(new Student(st1.nextToken(), st1.nextToken(), st1.nextToken()));
-                case "P":
-                    roster.print();
-                    break;
-                case "PS":
-                    roster.printByStanding();
-                    break;
-                case "PC":
-                    roster.printBySchoolMajor();
-                    break;
-                case "L":
-                    break;
-                case "C":
-                    break;
-                default:
-                    System.out.println(command + "is an invalid command!");
-                    break;
+            if(command.equals("A")) {
+                if(roster.add(new Student(st1.nextToken(), st1.nextToken(), st1.nextToken(), st1.nextToken(), Integer.parseInt(st1.nextToken()))))
+                    System.out.println();
+            }
+            if(command.equals("R"))
+                if(!roster.remove(roster.search(st1.nextToken(), st1.nextToken(), st1.nextToken())))
+                    System.out.println();
+            if(command.equals("P"))
+                roster.print();
+            if(command.equals("PS"))
+                roster.printByStanding();
+            if(command.equals("PC"))
+                roster.printBySchoolMajor();
+            if(command.equals("L")) {
+
+            }
+            if(command.equals("C")) {
+                String fname = st1.nextToken(), lname = st1.nextToken(), date = st1.nextToken();
+                Student temp = roster.search(fname, lname, date);
+                if(roster.contains(temp))
+                    System.out.println(fname + " " + lname + " " + date + " is not in the roster.");
+                else
+                    System.out.println(fname + " " + lname + " " + date + " added to the roster.");
+            }
+            else {
+                System.out.println(command + "is an invalid command!");
             }
             input = in.nextLine();
         }
-        System.out.println("project1.Roster Manager terminated.");
+        System.out.println("Roster Manager terminated.");
     }
 }
+
