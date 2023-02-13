@@ -15,6 +15,8 @@ public class Date implements Comparable<Date> {
     private static final int MAXIMUM_MONTH = 11;
     private static final int MINIMUM_MONTH = 0;
     private static final int MAXIMUM_DAY = 31;
+    private static final int NOT_LEAP_YEAR_FEB = 28;
+    private static final int LEAP_YEAR_FEB = 29;
     private static final int MINIMUM_DAY = 1;
     private static final int SAME = 0;
     private static final int BEFORE = -1;
@@ -49,32 +51,55 @@ public class Date implements Comparable<Date> {
         if (this.compareTo(new Date()) <= SAME) {
             return false;
         }
-        if (day <= MAXIMUM_DAY - 3) {
+        if (day <= NOT_LEAP_YEAR_FEB) {
             return true;
         }
-        if (day == MAXIMUM_DAY - 2) {
-            if (balancer == Calendar.FEBRUARY) {
+        if (balancer == Calendar.FEBRUARY) {
+            if (day > NOT_LEAP_YEAR_FEB) {
                 if (year % QUADRENNIAL == 0) {
                     if (year % CENTENNIAL == 0) {
                         if (year % QUATERCENTENNIAL == 0) {
+                            if (day == LEAP_YEAR_FEB) {
+                                return true;
+                            }
+                            return false;
+                        } else {
+                            if (day == LEAP_YEAR_FEB) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    } else {
+                        if (year % QUADRENNIAL == 0) {
+                            if (day == LEAP_YEAR_FEB) {
+                                return true;
+                            }
+                            return false;
+                        }
+                    }
+                    return false;
+                } else {
+                    if (year % QUADRENNIAL == 0) {
+                        if (day == LEAP_YEAR_FEB) {
                             return true;
                         }
                         return false;
                     }
-                    return true;
                 }
                 return false;
             }
             return true;
         }
+        if (day == MAXIMUM_DAY && ((balancer == Calendar.JANUARY) || (balancer == Calendar.MARCH) ||
+                (balancer == Calendar.MAY) || (balancer == Calendar.JULY) || (balancer == Calendar.AUGUST) ||
+                (balancer == Calendar.OCTOBER) || (balancer == Calendar.DECEMBER))){
+            return true;
+        }
         if(day == MAXIMUM_DAY - 1 && balancer != Calendar.FEBRUARY + 1){
             return true;
         }
-        if (day == MAXIMUM_DAY && ((balancer == Calendar.JANUARY) || (balancer == Calendar.MARCH) || (balancer == Calendar.MAY) || (balancer == Calendar.JULY) || (balancer == Calendar.AUGUST) || (balancer == Calendar.OCTOBER) || (balancer == Calendar.DECEMBER))){
-            return true;
-        }
         return false;
-    } //check if a date is a valid calendar date
+    }//check if a date is a valid calendar date
     @Override
     public String toString() {
         // return project1.Date info
@@ -123,14 +148,14 @@ public class Date implements Comparable<Date> {
     public static void main(String[] args) {
         // Test cases for Date
         // Test cases for project1.Date
-        System.out.println("Test1: The output should return false.");
-        Date date1 = new Date("02/30/2022");
+        System.out.println("Test1: The output should return true.");
+        Date date1 = new Date("02/29/1600");
         System.out.println(date1.toString() + ": " + date1.isValid());
         System.out.println("Test2: The output should return true.");
-        Date date2 = new Date("02/28/2021");
+        Date date2 = new Date("02/29/2012");
         System.out.println(date2.toString() + ": " + date2.isValid());
-        System.out.println("Test3: The output should return true.");
-        Date date3 = new Date("02/29/2016");
+        System.out.println("Test3: The output should return false.");
+        Date date3 = new Date("02/00/2020");
         System.out.println(date3.toString() + ": " + date3.isValid());
     }
 }
