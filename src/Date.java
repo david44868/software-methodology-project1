@@ -2,6 +2,7 @@ import java.time.Month;
 import java.util.Calendar;
 import java.util.StringTokenizer;
 
+
 public class Date implements Comparable<Date> {
     private int year;
     private int month;
@@ -9,7 +10,7 @@ public class Date implements Comparable<Date> {
     private static final int QUADRENNIAL = 4;
     private static final int CENTENNIAL = 100;
     private static final int QUATERCENTENNIAL = 400;
-    private static final int TWENTYTWENTYONE = 2021;
+    private static final int TWENTYTWENTYTHREE = 2023;
     private static final int MAXIMUM_MONTH = 11;
     private static final int MINIMUM_MONTH = 0;
     private static final int MAXIMUM_DAY = 31;
@@ -38,27 +39,40 @@ public class Date implements Comparable<Date> {
         if(balancer > MAXIMUM_MONTH){
             return false;
         }
-        if(balancer > MAXIMUM_DAY){
+        if(day > MAXIMUM_DAY){
             return false;
         }
         if(balancer < MINIMUM_MONTH){
             return false;
         }
-        if(balancer < MINIMUM_DAY){
+        if(day < MINIMUM_DAY){
             return false;
         }
-        if(balancer < TWENTYTWENTYONE){
-            return false;
-        }
-        if(balancer > MAXIMUM_MONTH){
+        if(year < TWENTYTWENTYTHREE){
             return false;
         }
         if(day == MAXIMUM_DAY - 2){
-            if()
+            if(balancer == Calendar.FEBRUARY){
+                if(year % QUADRENNIAL == 0){
+                    if(year % CENTENNIAL == 0){
+                        if(year % QUATERCENTENNIAL == 0){
+                            return true;
+                        }
+                        return false;
+                    }
+                    return true;
+                }
+                return false;
+            }
+            return true;
         }
         if(day <= MAXIMUM_DAY - 3){
             return true;
         }
+        if ((day == ((balancer == Calendar.JANUARY) || (balancer == Calendar.MARCH) || (balancer == Calendar.MAY) || (balancer == Calendar.JULY) || (balancer == Calendar.AUGUST) || (balancer == Calendar.OCTOBER) || (balancer == Calendar.DECEMBER))) && MAXIMUM_DAY){
+            return true;
+        }
+        return false;
     } //check if a date is a valid calendar date
 
     @Override
