@@ -81,7 +81,7 @@ public class Roster {
     public void print () {
         System.out.println("* Student roster sorted by last name, first name, DOB **");
         if(size == 0) {
-            System.out.println("There are no students in the roster.");
+            System.out.println("Student roster is empty!");
         }
         else {
             if(size > 1) {
@@ -104,7 +104,7 @@ public class Roster {
     public void printBySchoolMajor() {
         System.out.println("* Student roster sorted by school, major **");
         if(size == 0) {
-            System.out.println("There are no students in the roster.");
+            System.out.println("Student roster is empty!");
         }
         else {
             if(size > 1) {
@@ -143,7 +143,7 @@ public class Roster {
     public void printByStanding() {
         System.out.println("* Student roster sorted by standing **");
         if(size == 0) {
-            System.out.println("There are no students in the roster.");
+            System.out.println("Student roster is empty!");
         }
         else {
             if(size > 1) {
