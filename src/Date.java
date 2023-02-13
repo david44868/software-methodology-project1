@@ -31,10 +31,7 @@ public class Date implements Comparable<Date> {
         year = Integer.parseInt(st1.nextToken());
     } //take “mm/dd/yyyy” and create a Date object
     public boolean isValid() {
-        int balancer = month--;//off set month
-        if (this.compareTo(new Date()) <= SAME){
-            return false;
-        }
+        int balancer = month - 1;//off set month
         if(balancer > MAXIMUM_MONTH){
             return false;
         }
@@ -47,8 +44,14 @@ public class Date implements Comparable<Date> {
         if(day < MINIMUM_DAY){
             return false;
         }
-        if(year < TWENTYTWENTYTHREE){
+        if(year > TWENTYTWENTYTHREE){
             return false;
+        }
+        if (this.compareTo(new Date()) <= SAME){
+            return false;
+        }
+        if(day <= MAXIMUM_DAY - 3){
+            return true;
         }
         if(day == MAXIMUM_DAY - 2){
             if(balancer == Calendar.FEBRUARY){
@@ -63,9 +66,6 @@ public class Date implements Comparable<Date> {
                 }
                 return false;
             }
-            return true;
-        }
-        if(day <= MAXIMUM_DAY - 3){
             return true;
         }
         if (day == MAXIMUM_DAY && ((balancer == Calendar.JANUARY) || (balancer == Calendar.MARCH) || (balancer == Calendar.MAY) || (balancer == Calendar.JULY) || (balancer == Calendar.AUGUST) || (balancer == Calendar.OCTOBER) || (balancer == Calendar.DECEMBER))){
@@ -109,15 +109,16 @@ public class Date implements Comparable<Date> {
                 if (day > date.getDay())
                     return BEFORE;
             }
-                if(day == date.getDay()) {
-                    return SAME;
-                }
+            if(day == date.getDay()) {
+                return SAME;
+            }
         }
         // return int when comparing dates
         return AFTER;
     }
     public static void main(String[] args) {
         // Test cases for Date
+        Date date = new Date ("01/30/22");
+        System.out.println(date.toString() + ":" +date.isValid());
     }
-
 }
