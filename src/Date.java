@@ -116,4 +116,8 @@ public class Date implements Comparable<Date> {
         // return int when comparing dates
         return AFTER;
     }
+    public static void main(String[] args) {
+        // Test cases for Date
+    }
+
 }
