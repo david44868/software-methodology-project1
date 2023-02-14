@@ -130,14 +130,14 @@ public class Student implements Comparable<Student> {
 
         System.out.println("Test1: The output should return 1.");
         Student s9 = new Student("Jane", "Doe", "5/1/1996", "EE", 10);
-        Student s10 = new Student("April", "Doe ", "1/20/2003", "EE", 10);
+        Student s10 = new Student("April", "Doe", "1/20/2003", "EE", 10);
 
 
         System.out.println(s1.compareTo(s2));
-        System.out.println(s2.compareTo(s3));
-        System.out.println(s5.compareTo(s1));
         System.out.println(s3.compareTo(s4));
-        System.out.println(s4.compareTo(s5));
+        System.out.println(s5.compareTo(s6));
+        System.out.println(s7.compareTo(s8));
+        System.out.println(s9.compareTo(s10));
 
     }
 }
