@@ -54,12 +54,10 @@ public class Roster {
                 }
                 else if(!student.getProfile().getDob().isValid()) {
                     badDate(!student.getProfile().getDob().isValid(), student);
-                    System.out.println("DOB1" + student.getProfile().getDob().isValid());
                     return false;
                 }
                 else if(!validDate(student.getProfile().getDob())) {
-                    badDate(!validDate(student.getProfile().getDob()), student);
-                    System.out.println("DOB2" + !validDate(student.getProfile().getDob()));
+                    underAge(!validDate(student.getProfile().getDob()), student);
                     return false;
                 }
                 else {
@@ -73,7 +71,7 @@ public class Roster {
     } //add student to end of array
 
     public void studentAdded(Student student) {
-        System.out.println(student + " added to the roster.");
+        System.out.println(student.getProfile() + " added to the roster.");
     }
 
     public void badCredit(boolean credit) {
@@ -94,8 +92,13 @@ public class Roster {
     }
 
     public void badDate(boolean date, Student student) {
-        if(!date) {
+        if(date) {
             System.out.println("DOB invalid: " + student.getProfile().getDob() + " not a valid calendar date!");
+        }
+    }
+    public void underAge(boolean date, Student student) {
+        if(date) {
+            System.out.println("DOB invalid: " + student.getProfile().getDob() + " younger than 16 years old.");
         }
     }
 
@@ -138,8 +141,9 @@ public class Roster {
     }//maintain the order after remove
     public boolean contains(Student student) {
         for (int x = 0; x < size; x++) {
-            if(roster[x].equals(student)) {
-                return true;
+            if(roster[x] != null) {
+                if(roster[x].equals(student))
+                    return true;
             }
         }
         return false;
@@ -174,14 +178,23 @@ public class Roster {
         }
     }
 
+    public int lastStudent() {
+        int lastStudent = 0;
+        for(int i = 0; i < size; i++) {
+            if(roster[i] != null)
+                lastStudent = i;
+        }
+        return lastStudent;
+    }
+
     public void printSchool(String school) {
         if(checkEmpty()) {
             System.out.println("Student roster is empty!");
         }
         else {
-            if(size > 1) {
-                for(int i = 0; i < size; i++) {
-                    for(int j = 1; j < (size - 1); j++) {
+            if(lastStudent() > 0) {
+                for(int i = 0; i < lastStudent() + 1; i++) {
+                    for(int j = 1; j < (lastStudent()); j++) {
                         if(roster[j-i].compareTo(roster[j]) > 0) {
                             Student temporary = roster[j - 1];
                             roster[j - 1] = roster[j];
@@ -205,10 +218,10 @@ public class Roster {
             System.out.println("Student roster is empty!");
         }
         else {
-            if(size > 1) {
-                for(int i = 0; i < size; i++) {
-                    for(int j = 1; j < (size - 1); j++) {
-                        if(roster[j-i].compareTo(roster[j]) > 0) {
+            if(lastStudent() > 0) {
+                for(int i = 0; i < lastStudent() + 1; i++) {
+                    for(int j = 1; j < lastStudent(); j++) {
+                        if(roster[j-1].compareTo(roster[j]) > 0) {
                             Student temporary = roster[j - 1];
                             roster[j - 1] = roster[j];
                             roster[j] = temporary;
@@ -228,9 +241,9 @@ public class Roster {
             System.out.println("Student roster is empty!");
         }
         else {
-            if(size > 1) {
-                for(int i = 0; i < size; i++) {
-                    for(int j = 1; j < (size - 1); j++) {
+            if(lastStudent() > 0) {
+                for(int i = 0; i < lastStudent() + 1; i++) {
+                    for(int j = 1; j < lastStudent(); j++) {
                         if(roster[j-1].getMajor().getSchool().compareTo(roster[j].getMajor().getSchool()) > 0)
                         {
                             Student temporary = roster[j - 1];
@@ -267,9 +280,9 @@ public class Roster {
             System.out.println("Student roster is empty!");
         }
         else {
-            if(size > 1) {
-                for (int i = 0; i < size; i++) {
-                    for (int j = 1; j < (size - 1); j++) {
+            if(lastStudent() > 0) {
+                for(int i = 0; i < lastStudent() + 1; i++) {
+                    for(int j = 1; j < lastStudent(); j++) {
                         if(roster[j - 1].getStanding().compareTo(roster[j].getStanding()) > 0)
                         {
                             Student temporary = roster[j - 1];

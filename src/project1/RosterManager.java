@@ -26,7 +26,7 @@ public class RosterManager {
                 if(credit != (int) credit)
                     System.out.println("Credits completed invalid: not an integer!");
                 else
-                    System.out.println(roster.add(temp));
+                    roster.add(temp);
             }
             else if(command.equals("R")) {
                 Student temp = new Student(st1.nextToken(), st1.nextToken(), st1.nextToken());
