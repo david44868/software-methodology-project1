@@ -38,28 +38,26 @@ public class Roster {
         for (int x = 0; x < size; x++){
             if(roster[x] == null) {
                 // Check if credits are valid
-                if(!student.validCredits(student.getCreditCompleted())) {
-                    badCredit(!student.validCredits(student.getCreditCompleted()));
+                if(student.validCredits(student.getCreditCompleted()) == false) {
+                    badCredit(student.validCredits(student.getCreditCompleted()));
                     return false;
                 }
                 // Check if major is valid
-                else if(!student.validMajor(student.getMajor())){
-                    badMajor(!student.validMajor(student.getMajor()), student);
+                else if(student.validMajor(student.getMajor()) == false){
+                    badMajor(student.validMajor(student.getMajor()), student);
                     return false;
                 }
                 // Check if student already exists
-                else if(!checkEmpty()) {
-                    if(this.contains(student)) {
-                        this.studentExists(student);
-                        return false;
-                    }
-                }
-                else if(!student.getProfile().getDob().isValid()) {
-                    badDate(!student.getProfile().getDob().isValid(), student);
+                else if(this.contains(student)) {
+                    this.studentExists(student);
                     return false;
                 }
-                else if(!validDate(student.getProfile().getDob())) {
-                    underAge(!validDate(student.getProfile().getDob()), student);
+                else if(student.getProfile().getDob().isValid() == false) {
+                    badDate(student.getProfile().getDob().isValid(), student);
+                    return false;
+                }
+                else if(validDate(student.getProfile().getDob()) == false) {
+                    underAge(validDate(student.getProfile().getDob()), student);
                     return false;
                 }
                 else {
@@ -94,12 +92,12 @@ public class Roster {
     }
 
     public void badDate(boolean date, Student student) {
-        if(date) {
+        if(!date) {
             System.out.println("DOB invalid: " + student.getProfile().getDob() + " not a valid calendar date!");
         }
     }
     public void underAge(boolean date, Student student) {
-        if(date) {
+        if(!date) {
             System.out.println("DOB invalid: " + student.getProfile().getDob() + " younger than 16 years old.");
         }
     }
@@ -157,7 +155,7 @@ public class Roster {
 
     public boolean checkEmpty() {
         for (int x = 0; x < size; x++) {
-            if(roster[x] != null) {
+            if(this.roster[x] != null) {
                 return false;
             }
         }

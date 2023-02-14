@@ -137,22 +137,22 @@ public class Date implements Comparable<Date> {
     @Override
     public int compareTo(Date date) {
         if(year > date.getYear()){
-            return AFTER;
+            return BEFORE;
         }
         if(year == date.getYear()){
             if(month > date.getMonth()) {
-                return AFTER;
+                return BEFORE;
             }
             if(month == date.getMonth()) {
                 if (day > date.getDay())
-                    return AFTER;
+                    return BEFORE;
             }
             if(day == date.getDay()) {
                 return SAME;
             }
         }
         // return int when comparing dates
-        return BEFORE;
+        return AFTER;
     }
     public static void main(String[] args) {
         // Test cases for Date
