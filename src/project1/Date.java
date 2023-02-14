@@ -100,6 +100,10 @@ public class Date implements Comparable<Date> {
         }
         return false;
     }//check if a date is a valid calendar date
+    public void changeYear(int year) {
+        this.year = year;
+    }
+    public
     @Override
     public String toString() {
         // return project1.Date info
