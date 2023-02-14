@@ -103,7 +103,6 @@ public class Date implements Comparable<Date> {
     public void changeYear(int year) {
         this.year = year;
     }
-    public
     @Override
     public String toString() {
         // return project1.Date info
