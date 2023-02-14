@@ -1,3 +1,8 @@
+/**
+ Represents an enum called Major that has majors, major codes, and school
+ @author David Harianto, Joban Singh
+ **/
+
 package project1;
 
 public enum Major {
