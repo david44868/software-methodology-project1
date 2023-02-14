@@ -19,33 +19,35 @@ public class RosterManager {
         while(!input.equals("Q")) {
             StringTokenizer st1 = new StringTokenizer(input, " ");
             String command = st1.nextToken();
-            if(command.equals("A")) {
-                if(roster.add(new Student(st1.nextToken(), st1.nextToken(), st1.nextToken(), st1.nextToken(), Integer.parseInt(st1.nextToken()))))
-                    System.out.println();
-            }
-            if(command.equals("R"))
-                if(roster.remove(roster.search(st1.nextToken(), st1.nextToken(), st1.nextToken())))
-                    System.out.println();
-            if(command.equals("P"))
-                roster.print();
-            if(command.equals("PS"))
-                roster.printByStanding();
-            if(command.equals("PC"))
-                roster.printBySchoolMajor();
-            if(command.equals("L")) {
-
-            }
-            if(command.equals("C")) {
-                String fname = st1.nextToken(), lname = st1.nextToken(), date = st1.nextToken();
-                Student temp = new Student(fname, lname, date);
-                if(roster.contains(temp))
-                    System.out.println(fname + " " + lname + " " + date + " is not in the roster.");
+            if(command.equals("A")) { // Add student to the roster
+                Student temp = new Student(st1.nextToken(), st1.nextToken(), st1.nextToken(), st1.nextToken());
+                double credit = Double.parseDouble(st1.nextToken());
+                temp.setCredit((int) credit);
+                if(credit != (int) credit)
+                    System.out.println("Credits completed invalid: not an integer!");
                 else
-                    System.out.println(fname + " " + lname + " " + date + " added to the roster.");
+                    System.out.println(roster.add(temp));
             }
-            else {
-                System.out.println(command + "is an invalid command!");
+            else if(command.equals("R")) {
+                Student temp = new Student(st1.nextToken(), st1.nextToken(), st1.nextToken());
+                if (roster.remove(temp))
+                    System.out.println(temp + " removed from the roster.");
             }
+            else if(command.equals("P"))
+                roster.print();
+            else if(command.equals("PS"))
+                roster.printByStanding();
+            else if(command.equals("PC"))
+                roster.printBySchoolMajor();
+            else if(command.equals("L")) {
+                roster.printSchool(st1.nextToken());
+            }
+            else if(command.equals("C")) {
+                Student temp = new Student(st1.nextToken(), st1.nextToken(), st1.nextToken());
+                roster.majorChange(temp, st1.nextToken());
+            }
+            else
+                System.out.println(command + " is an invalid command!");
             input = in.nextLine();
         }
         System.out.println("Roster Manager terminated.");
