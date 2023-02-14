@@ -1,5 +1,10 @@
-package project1;
 
+
+package project1;
+/**
+ Represents an enum called Major that has majors, major codes, and school
+ @author David Harianto, Joban Singh
+ **/
 public enum Major {
 
     CS("SAS", "01:198"),
