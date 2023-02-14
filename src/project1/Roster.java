@@ -1,7 +1,9 @@
 package project1;
 
-import project1.Student;
-
+/**
+ Represents a Roster object which holds an array of Students
+ @author David Harianto, Joban Singh
+ **/
 public class Roster {
     private Student[] roster;
     private int size;

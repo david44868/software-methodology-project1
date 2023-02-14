@@ -1,6 +1,9 @@
 package project1;
 
-import project1.Student;
+/**
+ Represents a RosterManager object which allows the user to enter commands
+ @author David Harianto, Joban Singh
+ **/
 
 import java.util.Scanner;
 import java.util.StringTokenizer;

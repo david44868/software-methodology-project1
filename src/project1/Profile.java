@@ -1,5 +1,9 @@
 package project1;
 
+/**
+ Represents a Profile object which consists of first name, last name, and Date
+ @author David Harianto, Joban Singh
+ **/
 public class Profile implements Comparable<Profile> {
     private String lname;
     private String fname;

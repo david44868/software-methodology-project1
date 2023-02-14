@@ -1,5 +1,11 @@
 package project1;
 
+/**
+Represents a Date object
+@author David Harianto, Joban Singh
+ **/
+
+
 import java.util.Calendar;
 import java.util.StringTokenizer;
 

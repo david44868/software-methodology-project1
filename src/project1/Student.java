@@ -1,5 +1,8 @@
 package project1;
-
+/**
+ Represents a Student object which holds a Profile object, a major, and credits
+ @author David Harianto, Joban Singh
+ **/
 public class Student implements Comparable<Student> {
     private Profile profile;
     private Major major; //project1.Major is an enum type
