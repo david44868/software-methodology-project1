@@ -195,7 +195,7 @@ public class Roster {
             if(lastStudent() > 0) {
                 for(int i = 0; i < lastStudent() + 1; i++) {
                     for(int j = 1; j < (lastStudent()); j++) {
-                        if(roster[j-i].compareTo(roster[j]) > 0) {
+                        if(roster[j-1].compareTo(roster[j]) > 0) {
                             Student temporary = roster[j - 1];
                             roster[j - 1] = roster[j];
                             roster[j] = temporary;
