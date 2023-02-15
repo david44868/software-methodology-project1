@@ -12,7 +12,11 @@ public class Student implements Comparable<Student> {
         first = first.substring(0, 1).toUpperCase() + first.substring(1).toLowerCase();
         last = last.substring(0, 1).toUpperCase() + last.substring(1).toLowerCase();
         profile = new Profile(first, last, new Date(birth));
-        major = Major.valueOf(m.toUpperCase());
+        try {
+            major = Major.valueOf(m.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            major = Major.UNKNOWN;
+        }
         creditCompleted = (int) credits;
     }
 
@@ -26,7 +30,11 @@ public class Student implements Comparable<Student> {
         first = first.substring(0, 1).toUpperCase() + first.substring(1).toLowerCase();
         last = last.substring(0, 1).toUpperCase() + last.substring(1).toLowerCase();
         profile = new Profile(first, last, new Date(birth));
-        major = Major.valueOf(m.toUpperCase());
+        try {
+            major = Major.valueOf(m.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            major = Major.UNKNOWN;
+        }
     }
 
     // Check if the major is listed in the enum class for the majors
@@ -115,28 +123,26 @@ public class Student implements Comparable<Student> {
         System.out.println("Test1: The output should return -1.");
         Student s1 = new Student("Carl", "Brown", "10/7/2004", "EE", 10);
         Student s2 = new Student("Kate", "Lindsey ", "7/15/2002", "EE", 10);
+        System.out.println(s1.compareTo(s2));
 
-        System.out.println("Test1: The output should return -1.");
+        System.out.println("Test2: The output should return -1.");
         Student s3 = new Student("April", "Doe ", "1/20/2003", "EE", 10);
         Student s4 = new Student("John", "Doe ", "1/20/2003", "EE", 10);
+        System.out.println(s3.compareTo(s4));
 
-        System.out.println("Test1: The output should return 0.");
+        System.out.println("Test3: The output should return 0.");
         Student s5 = new Student("Jane", "Doe", "5/1/1996", "EE", 10);
         Student s6 = new Student("Jane", "Doe", "5/1/1996", "EE", 10);
+        System.out.println(s5.compareTo(s6));
 
-        System.out.println("Test1: The output should return 1.");
+        System.out.println("Test4: The output should return 1.");
         Student s7 = new Student("Mary", "Lindsey ", "12/1/2001", "EE", 10);
         Student s8 = new Student("Roy", "Brooks ", "8/8/1999", "EE", 10);
-
-        System.out.println("Test1: The output should return 1.");
-        Student s9 = new Student("Jane", "Doe", "5/1/1996", "EE", 10);
-        Student s10 = new Student("April", "Doe", "1/20/2003", "EE", 10);
-
-
-        System.out.println(s1.compareTo(s2));
-        System.out.println(s3.compareTo(s4));
-        System.out.println(s5.compareTo(s6));
         System.out.println(s7.compareTo(s8));
+
+        System.out.println("Test5: The output should return 1.");
+        Student s9 = new Student("Jane", "Doe", "5/1/1996", "EE", 10);
+        Student s10 = new Student("April", "Doe ", "1/20/2003", "EE", 10);
         System.out.println(s9.compareTo(s10));
 
     }

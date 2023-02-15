@@ -6,7 +6,8 @@ public enum Major {
     MATH("SAS", "01:640"),
     EE("SOE", "14:332"),
     ITI("SC&I", "04:547"),
-    BAIT("RBS", "33:136");
+    BAIT("RBS", "33:136"),
+    UNKNOWN(null, null);
     private final String school;
     private final String code;
 

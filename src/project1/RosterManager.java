@@ -24,17 +24,18 @@ public class RosterManager {
             String command = st1.nextToken();
             if(command.equals("A")) { // Add student to the roster
                 Student temp = new Student(st1.nextToken(), st1.nextToken(), st1.nextToken(), st1.nextToken());
-                double credit = Double.parseDouble(st1.nextToken());
-                temp.setCredit((int) credit);
-                if(credit != (int) credit)
-                    System.out.println("Credits completed invalid: not an integer!");
-                else
+                try {
+                    int credit = Integer.parseInt(st1.nextToken());
+                    temp.setCredit(credit);
                     roster.add(temp);
+                }
+                catch (NumberFormatException e) {
+                    System.out.println("Credits completed invalid: not an integer!");
+                }
             }
             else if(command.equals("R")) {
                 Student temp = new Student(st1.nextToken(), st1.nextToken(), st1.nextToken());
-                if (roster.remove(temp))
-                    System.out.println(temp + " removed from the roster.");
+                roster.remove(temp);
             }
             else if(command.equals("P"))
                 roster.print();

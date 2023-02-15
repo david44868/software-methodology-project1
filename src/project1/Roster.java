@@ -30,6 +30,7 @@ public class Roster {
             temporary[x] = roster[x];
         }
         roster = temporary;
+        size += 4;
     } //increase the array capacity by 4
     public boolean add(Student student) {
         if(roster[size - 1] != null) {
@@ -43,8 +44,8 @@ public class Roster {
                     return false;
                 }
                 // Check if major is valid
-                else if(student.validMajor(student.getMajor()) == false){
-                    badMajor(student.validMajor(student.getMajor()), student);
+                else if(student.getMajor() == Major.UNKNOWN){
+                    badMajor(student);
                     return false;
                 }
                 // Check if student already exists
@@ -102,10 +103,8 @@ public class Roster {
         }
     }
 
-    public void badMajor(boolean major, Student student) {
-        if(!major) {
-            System.out.println("Major code invalid: " + student.getMajor());
-        }
+    public void badMajor(Student student) {
+        System.out.println("Major code invalid: " + student.getMajor());
     }
 
     public void studentExists(Student student) {
@@ -124,21 +123,32 @@ public class Roster {
             empty();
             return false;
         }
-        if(!this.contains(student)) {
-            invalidStudent(!this.contains(student), student);
+        else if(!this.contains(student)) {
+            invalidStudent(this.contains(student), student);
             return false;
         }
         else {
             Student[] temporary = new Student[size];
+            Student removed = null;
             for(int x = 0; x < size; x++) {
-                if(!roster[x].equals(student)) {
-                    temporary[x] = roster[x];
+                if(roster[x] != null) {
+                    if (!roster[x].equals(student)) {
+                        temporary[x] = roster[x];
+                    }
+                    else {
+                        removed = roster[x];
+                    }
                 }
             }
             roster = temporary;
+            studentRemoved(removed);
             return true;
         }
     }//maintain the order after remove
+    public void studentRemoved(Student student) {
+        System.out.println(student.getProfile() + " removed from the roster.");
+    }
+
     public boolean contains(Student student) {
         for (int x = 0; x < size; x++) {
             if(roster[x] != null) {
