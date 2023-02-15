@@ -5,7 +5,7 @@ package project1;
  **/
 public class Student implements Comparable<Student> {
     private Profile profile;
-    private Major major; //project1.Major is an enum type
+    private Major major; //Major is an enum type
     private int creditCompleted;
 
     public Student (String first, String last, String birth, String m, double credits) {
@@ -53,13 +53,8 @@ public class Student implements Comparable<Student> {
     }
 
     public boolean changeMajor(Major m) {
-        if(this.validMajor(m)) {
-            major = m;
-            return true;
-        }
-        else {
-            return false;
-        }
+        this.major = m;
+        return true;
     }
 
     public String getStanding() {
@@ -96,7 +91,7 @@ public class Student implements Comparable<Student> {
     @Override
     public String toString() {
         // return project1.Student info
-        return this.profile.toString() + "(" + this.major.getCode() + " " + this.major +
+        return this.profile.toString() + " (" + this.major.getCode() + " " + this.major +
                 " " + this.major.getSchool() + ")" + " credits completed: " + creditCompleted
                 + " (" + this.getStanding() + ")";
     }

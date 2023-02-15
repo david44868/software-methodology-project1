@@ -179,12 +179,14 @@ public class Roster {
         else if(!this.contains(student)) {
             System.out.println(student.getProfile() + " is not in the roster.");
         }
-        else if(!student.validMajor(Major.valueOf(major.toUpperCase()))) {
-            System.out.println("Major code invalid: " + major);
-        }
         else {
-            roster[this.find(student)].changeMajor(Major.valueOf(major));
-            System.out.println(student + " major changed to " + major.toUpperCase());
+            try {
+                roster[this.find(student)].changeMajor(Major.valueOf(major.toUpperCase()));
+                System.out.println(roster[this.find(student)].getProfile() + " major changed to " + major.toUpperCase());
+            }
+            catch (IllegalArgumentException e) {
+                System.out.println("Major code invalid: " + major);
+            }
         }
     }
 
@@ -201,6 +203,10 @@ public class Roster {
         if(checkEmpty()) {
             System.out.println("Student roster is empty!");
         }
+        else if(school != Major.CS.getSchool() || school != Major.MATH.getSchool() ||
+                school != Major.EE.getSchool() || school != Major.ITI.getSchool() || school != Major.BAIT.getSchool()) {
+            System.out.println("School doesn't exist: " + school);
+        }
         else {
             if(lastStudent() > 0) {
                 for(int i = 0; i < lastStudent() + 1; i++) {
@@ -213,14 +219,17 @@ public class Roster {
                     }
                 }
             }
-            System.out.println("* Students in SOE *");
+            System.out.println("* Students in " + school + " *");
             for(int i = 0; i < size; i++) {
-                if(roster[i].getMajor().getSchool().equals(school)) {
-                    System.out.println(roster[i]);
+                if(roster[i] != null) {
+                    if (roster[i].getMajor().getSchool().equals(school)) {
+                        System.out.println(roster[i]);
+                    }
                 }
             }
+            System.out.println("* end of list **");
         }
-        System.out.println("* end of list **");
+
     }
 
     public void print () {
@@ -241,7 +250,8 @@ public class Roster {
             }
             System.out.println("* Student roster sorted by last name, first name, DOB **");
             for(int i = 0; i < size; i++) {
-                System.out.println(roster[i]);
+                if(roster[i] != null)
+                    System.out.println(roster[i]);
             }
             System.out.println("* end of roster **");
         }
@@ -279,7 +289,8 @@ public class Roster {
             }
             System.out.println("* Student roster sorted by school, major **");
             for(int i = 0; i < size; i++) {
-                System.out.println(roster[i]);
+                if(roster[i] != null)
+                    System.out.println(roster[i]);
             }
             System.out.println("* end of roster **");
         }
@@ -311,7 +322,8 @@ public class Roster {
             }
             System.out.println("* Student roster sorted by standing **");
             for(int i = 0; i < size; i++) {
-                System.out.println(roster[i]);
+                if(roster[i] != null)
+                    System.out.println(roster[i]);
             }
             System.out.println("* end of roster **");
         }
