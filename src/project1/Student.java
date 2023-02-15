@@ -1,6 +1,6 @@
 package project1;
 /**
- Represents a Student object which holds a Profile object, a major, and credits
+ Represents a Student object which holds a Profile object, a major, and credits completed.
  @author David Harianto, Joban Singh
  **/
 public class Student implements Comparable<Student> {
@@ -8,6 +8,10 @@ public class Student implements Comparable<Student> {
     private Major major; //Major is an enum type
     private int creditCompleted;
 
+    /**
+     This is a constructor that takes in 5 parameters for a student.
+     @author David Harianto, Joban Singh
+     **/
     public Student (String first, String last, String birth, String m, double credits) {
         first = first.substring(0, 1).toUpperCase() + first.substring(1).toLowerCase();
         last = last.substring(0, 1).toUpperCase() + last.substring(1).toLowerCase();
@@ -19,13 +23,19 @@ public class Student implements Comparable<Student> {
         }
         creditCompleted = (int) credits;
     }
-
+    /**
+     This is a constructor that takes in 3 parameters for a student.
+     @author David Harianto, Joban Singh
+     **/
     public Student (String first, String last, String birth) {
         first = first.substring(0, 1).toUpperCase() + first.substring(1).toLowerCase();
         last = last.substring(0, 1).toUpperCase() + last.substring(1).toLowerCase();
         profile = new Profile(first, last, new Date(birth));
     }
-
+    /**
+     This is a constructor that takes in 4 parameters for a student.
+     @author David Harianto, Joban Singh
+     **/
     public Student (String first, String last, String birth, String m) {
         first = first.substring(0, 1).toUpperCase() + first.substring(1).toLowerCase();
         last = last.substring(0, 1).toUpperCase() + last.substring(1).toLowerCase();
@@ -38,6 +48,10 @@ public class Student implements Comparable<Student> {
     }
 
     // Check if the major is listed in the enum class for the majors
+    /**
+     This method checks if the major is valid.
+     @author David Harianto, Joban Singh
+     **/
     public boolean validMajor(Major m) {
         if(m == Major.CS || m == Major.EE || m == Major.ITI || m == Major.MATH || m == Major.BAIT) {
             return true;
@@ -48,15 +62,27 @@ public class Student implements Comparable<Student> {
     }
 
     // Check if the credits are valid, must not be negative
+    /**
+     This method checks if the amount of credits is valid.
+     @author David Harianto, Joban Singh
+     **/
     public boolean validCredits(int credits) {
         return (credits > 0);
     }
 
+    /**
+     This method changes the student major.
+     @author David Harianto, Joban Singh
+     **/
     public boolean changeMajor(Major m) {
         this.major = m;
         return true;
     }
 
+    /**
+     This method checks what the standing is of the student.
+     @author David Harianto, Joban Singh
+     **/
     public String getStanding() {
         if(this.creditCompleted < 30) {
             return "Freshman";
@@ -71,23 +97,39 @@ public class Student implements Comparable<Student> {
             return "Senior";
         }
     }
-
+    /**
+     This method sets the amount of credits.
+     @author David Harianto, Joban Singh
+     **/
     public void setCredit(int credits) {
         creditCompleted = credits;
     }
-
+    /**
+     This method returns the profile.
+     @author David Harianto, Joban Singh
+     **/
     public Profile getProfile() {
         return this.profile;
     }
-
+    /**
+     This method returns the major.
+     @author David Harianto, Joban Singh
+     **/
     public Major getMajor() {
         return this.major;
     }
-
+    /**
+     This method returns the amount of credits completed.
+     @author David Harianto, Joban Singh
+     **/
     public int getCreditCompleted() {
         return this.creditCompleted;
     }
 
+    /**
+     This method returns the major code, school name, and credits completed.
+     @author David Harianto, Joban Singh
+     **/
     @Override
     public String toString() {
         // return project1.Student info
@@ -95,6 +137,11 @@ public class Student implements Comparable<Student> {
                 " " + this.major.getSchool() + ")" + " credits completed: " + creditCompleted
                 + " (" + this.getStanding() + ")";
     }
+
+    /**
+     This method checks if the student given is the same student.
+     @author David Harianto, Joban Singh
+     **/
     @Override
     public boolean equals(Object object) {
         // Compare two students
@@ -107,11 +154,19 @@ public class Student implements Comparable<Student> {
         Student s = (Student) object;
         return this.profile.equals(s.profile);
     }
+    /**
+     This method returns a number when comparing a given student.
+     @author David Harianto, Joban Singh
+     **/
     @Override
     public int compareTo(Student s) {
         // return int when comparing students
         return this.profile.compareTo(s.profile);
     }
+    /**
+     This method provides the test cases for the student class.
+     @author David Harianto, Joban Singh
+     **/
     public static void main(String[] args) {
         // Test cases for Student
         // Test cases for project1.Student

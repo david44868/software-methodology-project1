@@ -1,7 +1,7 @@
 package project1;
 
 /**
- Main class to run the entire project
+ Driver class to run the entire project.
  @author David Harianto, Joban Singh
  **/
 public class RunProject1 {

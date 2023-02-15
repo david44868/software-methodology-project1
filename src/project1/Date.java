@@ -1,15 +1,13 @@
 package project1;
 
-/**
- Represents a Date object
- @author David Harianto, Joban Singh
- **/
-
-
 import java.util.Calendar;
 import java.util.StringTokenizer;
 
 
+/**
+ Represents the date abstract data type with the day, month, and year.
+ @author David Harianto, Joban Singh
+ **/
 public class Date implements Comparable<Date> {
     private int year;
     private int month;
@@ -28,6 +26,10 @@ public class Date implements Comparable<Date> {
     private static final int BEFORE = -1;
     private static final int AFTER = 1;
 
+    /**
+     This method creates an object with today's date.
+     @author David Harianto, Joban Singh
+     **/
     public Date() {
         Calendar currentDate = Calendar.getInstance();
         month = currentDate.get(Calendar.MONTH) + 1;
@@ -35,6 +37,12 @@ public class Date implements Comparable<Date> {
         year = currentDate.get(Calendar.YEAR);
     } //create an object with today’s date (see Calendar class)
 
+
+    /**
+     This method creates takes in the day, month, and year
+     as mm/dd/yyyy and creates a date object of it.
+     @author David Harianto, Joban Singh
+     **/
     public Date(String date) {
         StringTokenizer st1 = new StringTokenizer(date, "/");
         month = Integer.parseInt(st1.nextToken());
@@ -43,6 +51,10 @@ public class Date implements Comparable<Date> {
 
     } //take “mm/dd/yyyy” and create a Date object
 
+    /**
+     This method checks if the date entered is a valid calendar date.
+     @author David Harianto, Joban Singh
+     **/
     public boolean isValid() {
         int balancer = month - 1;//off set month
         if (year > CURRENTYEAR) {
@@ -108,16 +120,28 @@ public class Date implements Comparable<Date> {
         return false;
     }//check if a date is a valid calendar date
 
+    /**
+     This method changes the year.
+     @author David Harianto, Joban Singh
+     **/
     public void changeYear(int year) {
         this.year = year;
     }
 
+    /**
+     This method returns the day, month, and year.
+     @author David Harianto, Joban Singh
+     **/
     @Override
     public String toString() {
         // return project1.Date info
         return month + "/" + day + "/" + year;
     }
 
+    /**
+     This method checks if date is the same date.
+     @author David Harianto, Joban Singh
+     **/
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -130,17 +154,35 @@ public class Date implements Comparable<Date> {
         return year == date.year && month == date.month && day == date.day;
     }
 
+    /**
+     This method returns year.
+     @author David Harianto, Joban Singh
+     **/
     public int getYear() {
         return year;
     }
 
+    /**
+     This method returns month.
+     @author David Harianto, Joban Singh
+     **/
     public int getMonth() {
         return month;
     }
 
+    /**
+     This method returns day.
+     @author David Harianto, Joban Singh
+     **/
     public int getDay() {
         return day;
     }
+    /**
+     This method takes in the date and compares it with
+     another date which returns -1 if it comes before,
+     0 if it is the same date, and 1 if it comes after.
+     @author David Harianto, Joban Singh
+     **/
     @Override
     public int compareTo(Date date) {
         if (year > date.getYear()) {
@@ -162,6 +204,10 @@ public class Date implements Comparable<Date> {
         return AFTER;
     }
 
+    /**
+     This method provides the test cases for the Date class.
+     @author David Harianto, Joban Singh
+     **/
     public static void main(String[] args) {
         // Test cases for Date
         // Test cases for project1.Date

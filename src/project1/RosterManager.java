@@ -1,26 +1,33 @@
 package project1;
 
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
 /**
  Represents a RosterManager object which allows the user to enter commands
  @author David Harianto, Joban Singh
  **/
-
-import java.util.Scanner;
-import java.util.StringTokenizer;
-
 public class RosterManager {
 
+    /**
+     Default constructor.
+     @author David Harianto, Joban Singh
+     **/
     public RosterManager() {
 
     }
 
+    /**
+     Method that accepts user input and based on the input provided does a command.
+     @author David Harianto, Joban Singh
+     **/
     public void run() {
         Scanner in = new Scanner(System.in);
         System.out.println("Roster Manager running...");
         Roster roster = new Roster();
-        String input = in.nextLine();
-        while(!input.equals("Q")) {
-            if(input != "") {
+        while(in.hasNextLine()) {
+            String input = in.nextLine();
+            if(!input.isEmpty()) {
                 StringTokenizer st1 = new StringTokenizer(input, " ");
                 String command = st1.nextToken();
                 if(command.equals("A")) { // Add student to the roster
@@ -50,10 +57,11 @@ public class RosterManager {
                     Student temp = new Student(st1.nextToken(), st1.nextToken(), st1.nextToken());
                     roster.majorChange(temp, st1.nextToken());
                 }
+                else if(command.equals("Q"))
+                    break;
                 else
                     System.out.println(command + " is an invalid command!");
             }
-            input = in.nextLine();
         }
         System.out.println("Roster Manager terminated.");
     }
