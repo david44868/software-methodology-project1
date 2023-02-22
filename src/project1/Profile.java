@@ -69,11 +69,13 @@ public class Profile implements Comparable<Profile> {
             } else if (this.fname.toLowerCase().compareTo(p.fname.toLowerCase()) > 0) {
                 return 1;
             } else {
-                if (this.dob.compareTo(p.dob) < 0) {
+                if (this.dob.compareTo(p.dob) > 0) {
                     return -1;
-                } else if (this.dob.compareTo(p.dob) > 0) {
+                }
+                else if (this.dob.compareTo(p.dob) < 0) {
                     return 1;
-                } else {
+                }
+                else {
                     return 0;
                 }
             }
